@@ -6,7 +6,7 @@ export type Player = {
 	address: string;
 	debt: number;
 	atGameNumber: number;
-	isDead?: boolean;
+	isDead: boolean;
 };
 
 export type Worker = {
@@ -20,7 +20,7 @@ export type Worker = {
 
 export type Game = {
 	uuid: string;
-	gameNo: string;
+	gameNo: number;
 	name: string;
 	description: string;
 	hasCovered: boolean;

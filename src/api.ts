@@ -54,7 +54,7 @@ export const fetchGames = async (): Promise<Game[]> => {
 	data.forEach((rawGame) => {
 		games.push({
 			uuid: rawGame["uuid"],
-			gameNo: rawGame["game_no"],
+			gameNo: +rawGame["game_no"],
 			name: rawGame["name"],
 			description: rawGame["description"],
 			hasCovered: false,

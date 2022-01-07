@@ -1,12 +1,52 @@
+# Player
+type Player {
+	id: Int!
+	name: String!
+	dob: Int!
+	occupation: String!
+	address: String!
+	debt: Int!
+	atGameNumber: Int!
+	isDead: Boolean!
+}
+
+# Worker
+enum WorkerDuty {
+	Manager
+	Guard
+	Utility
+}
+type Worker {
+	id: Int!
+	name: String!
+	dob: Int!
+	occupation: String!
+	address: String!
+	duty: WorkerDuty!
+}
+
+# Gamer
+type Game {
+	uuid: String!
+	gameNo: Int!
+	name: String!
+	description: String!
+	hasCovered: Boolean!
+}
+
+# Resolver
 type QueryResolver {
-    getUser(id: String): String!
+	getAllPlayers: [Player!]!
+	getAllWorkers: [Worker!]!
+	getAllGames: [Game!]!
 }
 
 # type MutationResolver {
 
 # }
 
+# Schema
 schema {
-    query: QueryResolver
-    # mutation: MutationResolver
+	query: QueryResolver
+	# mutation: MutationResolver
 }

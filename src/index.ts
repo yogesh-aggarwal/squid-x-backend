@@ -2,7 +2,7 @@ const express = require("express");
 import { importSchema } from "graphql-import";
 import { ApolloServer, gql } from "apollo-server-express";
 import resolvers from "./resolvers";
-import { fetchPlayers } from "./api";
+import { setupData } from "./data";
 
 const typeDefs = gql(importSchema("src/graphql/schema.gql")); // Parse schema
 
@@ -12,16 +12,15 @@ const main = async () => {
 	await server.start();
 	server.applyMiddleware({ app });
 
-	app.listen({ port: 3000 }, () =>
+	app.listen({ port: 3000 }, async () => {
+		await setupData();
 		console.log(
 			`🚀 Server ready at http://localhost:${3000}${server.graphqlPath}`
-		)
-	);
+		);
+	});
 };
 
-const testMain = () => {
-	fetchPlayers();
-};
+const testMain = () => {};
 
-// main();
+main();
 testMain();
