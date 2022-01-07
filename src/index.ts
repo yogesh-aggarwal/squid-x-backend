@@ -2,6 +2,7 @@ const express = require("express");
 import { importSchema } from "graphql-import";
 import { ApolloServer, gql } from "apollo-server-express";
 import resolvers from "./resolvers";
+import { fetchPlayers } from "./api";
 
 const typeDefs = gql(importSchema("src/graphql/schema.gql")); // Parse schema
 
@@ -18,4 +19,9 @@ const main = async () => {
 	);
 };
 
-main();
+const testMain = () => {
+	fetchPlayers();
+};
+
+// main();
+testMain();
