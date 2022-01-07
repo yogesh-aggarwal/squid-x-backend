@@ -9,6 +9,15 @@ type Player {
 	atGameNumber: Int!
 	isDead: Boolean!
 }
+input PlayerInput {
+	name: String
+	dob: Int
+	occupation: String
+	address: String
+	debt: Int
+	atGameNumber: Int
+	isDead: Boolean
+}
 
 # Worker
 enum WorkerDuty {
@@ -24,8 +33,15 @@ type Worker {
 	address: String!
 	duty: WorkerDuty!
 }
+input WorkerInput {
+	name: String
+	dob: Int
+	occupation: String
+	address: String
+	duty: WorkerDuty
+}
 
-# Gamer
+# Game
 type Game {
 	uuid: String!
 	gameNo: Int!
@@ -40,13 +56,19 @@ type QueryResolver {
 	getAllWorkers: [Worker!]!
 	getAllGames: [Game!]!
 }
-
-# type MutationResolver {
-
-# }
+type MutationResolver {
+	# Player
+	deletePlayer(id: Int): Boolean!
+	createPlayer(player: PlayerInput): Player!
+	updatePlayer(id: Int, player: PlayerInput): Player!
+	# Worker
+	deleteWorker(id: Int): Worker!
+	createWorker(worker: WorkerInput): Worker!
+	updateWorker(id: Int, worker: WorkerInput): Worker!
+}
 
 # Schema
 schema {
 	query: QueryResolver
-	# mutation: MutationResolver
+	mutation: MutationResolver
 }

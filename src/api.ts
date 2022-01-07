@@ -12,10 +12,11 @@ export const fetchPlayers = async (): Promise<Player[]> => {
 	let res = await fetch(makeEndpoint("players"));
 	const data: any[] = (await res.json())["rows"];
 
+	let lastPlayerID: number = 1;
 	let players: Player[] = [];
 	data.forEach((rawPlayer) => {
 		players.push({
-			id: Date.now(),
+			id: lastPlayerID,
 			name: rawPlayer["name"],
 			dob: rawPlayer["dob"],
 			occupation: rawPlayer["occupation"],
@@ -24,6 +25,7 @@ export const fetchPlayers = async (): Promise<Player[]> => {
 			atGameNumber: 1,
 			isDead: false,
 		});
+		lastPlayerID++;
 	});
 	return players;
 };
@@ -32,16 +34,18 @@ export const fetchWorkers = async (): Promise<Worker[]> => {
 	let res = await fetch(makeEndpoint("workers"));
 	const data: any[] = (await res.json())["rows"];
 
+	let lastWorkerID: number = 1;
 	let workers: Worker[] = [];
 	data.forEach((rawWorker) => {
 		workers.push({
-			id: Date.now(),
+			id: lastWorkerID,
 			name: rawWorker["name"],
 			dob: rawWorker["dob"],
 			occupation: rawWorker["occupation"],
 			address: rawWorker["address"],
 			duty: "Guard",
 		});
+		lastWorkerID++;
 	});
 	return workers;
 };
