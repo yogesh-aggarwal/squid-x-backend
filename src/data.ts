@@ -11,6 +11,7 @@ export const setupData = async () => {
 	games = await fetchGames();
 };
 
+// -- Players ----------
 export const deletePlayer = (id: number) => {
 	players = players.filter((player) => player.id != id);
 };
@@ -25,6 +26,7 @@ export const updatePlayer = (id: number, player: Partial<Player>): Player => {
 	return players[id - 1];
 };
 
+// -- Workers ----------
 export const deleteWorker = (id: number) => {
 	workers = workers.filter((worker) => worker.id != id);
 };
