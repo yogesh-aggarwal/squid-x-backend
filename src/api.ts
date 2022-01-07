@@ -1,4 +1,4 @@
-import { Player } from "./types";
+import { Game, Player } from "./types";
 
 const fetch = require("node-fetch");
 
@@ -25,6 +25,22 @@ export const fetchPlayers = async (): Promise<Player[]> => {
 			isDead: false,
 		});
 	});
-
 	return players;
+};
+
+export const fetchGames = async (): Promise<Game[]> => {
+	let res = await fetch(makeEndpoint("games"));
+	const data: any[] = (await res.json())["rows"];
+
+	let games: Game[] = [];
+	data.forEach((rawPlayer) => {
+		games.push({
+			uuid: rawPlayer["uuid"],
+			gameNo: rawPlayer["game_no"],
+			name: rawPlayer["name"],
+			description: rawPlayer["description"],
+			hasCovered: false,
+		});
+	});
+	return games;
 };

@@ -8,3 +8,11 @@ export type Player = {
 	atGameNumber: number;
 	isDead?: boolean;
 };
+
+export type Game = {
+	uuid: string;
+	gameNo: string;
+	name: string;
+	description: string;
+	hasCovered: boolean;
+};
