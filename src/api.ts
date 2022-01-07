@@ -15,10 +15,11 @@ export const fetchPlayers = async (): Promise<Player[]> => {
 	let lastPlayerID: number = 1;
 	let players: Player[] = [];
 	data.forEach((rawPlayer) => {
+		const dobWords: string[] = rawPlayer["dob"].split("/");
 		players.push({
 			id: lastPlayerID,
 			name: rawPlayer["name"],
-			dob: rawPlayer["dob"],
+			dob: new Date(`${dobWords[1]}/${dobWords[0]}/${dobWords[2]}`),
 			occupation: rawPlayer["occupation"],
 			address: rawPlayer["address"],
 			debt: rawPlayer["debt"],
@@ -37,10 +38,11 @@ export const fetchWorkers = async (): Promise<Worker[]> => {
 	let lastWorkerID: number = 1;
 	let workers: Worker[] = [];
 	data.forEach((rawWorker) => {
+		const dobWords: string[] = rawWorker["dob"].split("/");
 		workers.push({
 			id: lastWorkerID,
 			name: rawWorker["name"],
-			dob: rawWorker["dob"],
+			dob: new Date(`${dobWords[1]}/${dobWords[0]}/${dobWords[2]}`),
 			occupation: rawWorker["occupation"],
 			address: rawWorker["address"],
 			duty: "Guard",

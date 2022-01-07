@@ -1,11 +1,13 @@
+scalar GraphQLDate
+
 # Player
 type Player {
 	id: Int!
 	name: String!
-	dob: Int!
+	dob: GraphQLDate!
 	occupation: String!
 	address: String!
-	debt: Int!
+	debt: Float!
 	atGameNumber: Int!
 	isDead: Boolean!
 }
@@ -14,7 +16,7 @@ input PlayerInput {
 	dob: Int
 	occupation: String
 	address: String
-	debt: Int
+	debt: Float
 	atGameNumber: Int
 	isDead: Boolean
 }
@@ -28,7 +30,7 @@ enum WorkerDuty {
 type Worker {
 	id: Int!
 	name: String!
-	dob: Int!
+	dob: GraphQLDate!
 	occupation: String!
 	address: String!
 	duty: WorkerDuty!

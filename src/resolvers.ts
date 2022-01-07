@@ -10,8 +10,10 @@ import {
 	workers,
 } from "./data";
 import { Game, Player, Worker } from "./types";
+var GraphQLDate = require("graphql-date");
 
 export default {
+	GraphQLDate: GraphQLDate,
 	QueryResolver: {
 		getAllPlayers: (_: any, __: {}): Player[] => {
 			return players;
