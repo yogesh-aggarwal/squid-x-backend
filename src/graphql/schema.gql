@@ -1,0 +1,12 @@
+type QueryResolver {
+    getUser(id: String): String!
+}
+
+# type MutationResolver {
+
+# }
+
+schema {
+    query: QueryResolver
+    # mutation: MutationResolver
+}
