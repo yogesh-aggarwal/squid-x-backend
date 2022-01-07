@@ -24,3 +24,17 @@ export const updatePlayer = (id: number, player: Partial<Player>): Player => {
 	};
 	return players[id - 1];
 };
+
+export const deleteWorker = (id: number) => {
+	workers = workers.filter((worker) => worker.id != id);
+};
+export const createWorker = (worker: Worker) => {
+	workers.push(worker);
+};
+export const updateWorker = (id: number, worker: Partial<Worker>): Worker => {
+	workers[id - 1] = {
+		...workers[id - 1],
+		...worker,
+	};
+	return workers[id - 1];
+};
