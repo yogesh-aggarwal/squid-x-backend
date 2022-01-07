@@ -9,6 +9,15 @@ export type Player = {
 	isDead?: boolean;
 };
 
+export type Worker = {
+	id: number;
+	name: string;
+	dob: number;
+	occupation: string;
+	address: string;
+	duty: "Manager" | "Guard" | "Utility";
+};
+
 export type Game = {
 	uuid: string;
 	gameNo: string;
