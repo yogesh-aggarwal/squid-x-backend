@@ -80,9 +80,11 @@ type MutationResolver {
 	createPlayer(player: PlayerCreateInput): Player!
 	updatePlayer(id: Int, player: PlayerUpdateInput): Player!
 	# Worker
-	deleteWorker(id: Int): Worker!
+	deleteWorker(id: Int): Boolean!
 	createWorker(worker: WorkerCreateInput): Worker!
 	updateWorker(id: Int, worker: WorkerUpdateInput): Worker!
+	# Game
+	moveToNextGame: [Game!]!
 }
 
 # Schema

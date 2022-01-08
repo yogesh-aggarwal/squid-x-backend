@@ -4,6 +4,7 @@ import {
 	deletePlayer,
 	deleteWorker,
 	games,
+	moveToNextGame,
 	players,
 	updatePlayer,
 	updateWorker,
@@ -63,6 +64,10 @@ export default {
 			args: { id: number; worker: Partial<Worker> }
 		): Worker => {
 			return updateWorker(args.id, args.worker);
+		},
+		// -- Game ----------
+		moveToNextGame: (_: any, __: {}): Game[] => {
+			return moveToNextGame();
 		},
 	},
 };

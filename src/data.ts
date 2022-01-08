@@ -4,6 +4,7 @@ import { fetchGames, fetchPlayers, fetchWorkers } from "./api";
 export let players: Player[] = [];
 export let workers: Worker[] = [];
 export let games: Game[] = [];
+export let currentGame: number = 0;
 
 export const setupData = async () => {
 	players = await fetchPlayers();
@@ -39,4 +40,12 @@ export const updateWorker = (id: number, worker: Partial<Worker>): Worker => {
 		...worker,
 	};
 	return workers[id - 1];
+};
+
+// -- Game ----------
+export const moveToNextGame = (): Game[] => {
+	currentGame++;
+	games.map((game) => (game.hasCovered = game.gameNo <= currentGame));
+	// Store data here!!
+	return games;
 };
