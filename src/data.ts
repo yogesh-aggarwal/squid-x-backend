@@ -50,7 +50,7 @@ export const moveToNextGame = (): Game[] => {
 		if (!player.isDead) player.atGameNumber++;
 	});
 	data[currentGame] = {
-		games: [...games],
+		game: { ...games[currentGame] },
 		players: [...players],
 		workers: [...workers],
 	};
