@@ -25,3 +25,10 @@ export type Game = {
 	description: string;
 	hasCovered: boolean;
 };
+
+export type Report = {
+	[key: number]: {
+		players: Player[];
+		workers: Worker[];
+	};
+};

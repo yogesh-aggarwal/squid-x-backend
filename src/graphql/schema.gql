@@ -1,4 +1,5 @@
 scalar GraphQLDate
+scalar GraphQLJSON
 
 # Player
 type Player {
@@ -73,6 +74,7 @@ type QueryResolver {
 	getAllPlayers: [Player!]!
 	getAllWorkers: [Worker!]!
 	getAllGames: [Game!]!
+	getReport: GraphQLJSON!
 }
 type MutationResolver {
 	# Player

@@ -6,15 +6,18 @@ import {
 	games,
 	moveToNextGame,
 	players,
+	prepareReport,
 	updatePlayer,
 	updateWorker,
 	workers,
 } from "./data";
-import { Game, Player, Worker } from "./types";
+import { Game, Player, Report, Worker } from "./types";
 var GraphQLDate = require("graphql-date");
+import GraphQLJSON from "graphql-type-json";
 
 export default {
 	GraphQLDate: GraphQLDate,
+	GraphQLJSON: GraphQLJSON,
 	QueryResolver: {
 		getAllPlayers: (_: any, __: {}): Player[] => {
 			return players;
@@ -24,6 +27,9 @@ export default {
 		},
 		getAllGames: (_: any, __: {}): Game[] => {
 			return games;
+		},
+		getReport: (_: any, __: {}): Report => {
+			return prepareReport();
 		},
 	},
 	MutationResolver: {

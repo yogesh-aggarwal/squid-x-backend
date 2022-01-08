@@ -1,10 +1,12 @@
-import { Game, Player, Worker } from "./types";
+import { Game, Player, Report, Worker } from "./types";
 import { fetchGames, fetchPlayers, fetchWorkers } from "./api";
 
 export let players: Player[] = [];
 export let workers: Worker[] = [];
 export let games: Game[] = [];
 export let currentGame: number = 0;
+
+export let data: Report = {};
 
 export const setupData = async () => {
 	players = await fetchPlayers();
@@ -44,8 +46,16 @@ export const updateWorker = (id: number, worker: Partial<Worker>): Worker => {
 
 // -- Game ----------
 export const moveToNextGame = (): Game[] => {
+	data[currentGame] = {
+		players: [...players],
+		workers: [...workers],
+	};
 	currentGame++;
 	games.map((game) => (game.hasCovered = game.gameNo <= currentGame));
-	// Store data here!!
 	return games;
+};
+
+// -- Report ----------
+export const prepareReport = (): Report => {
+	return data;
 };
