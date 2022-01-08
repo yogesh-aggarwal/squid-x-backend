@@ -11,9 +11,18 @@ type Player {
 	atGameNumber: Int!
 	isDead: Boolean!
 }
-input PlayerInput {
+input PlayerCreateInput {
+	name: String!
+	dob: GraphQLDate!
+	occupation: String!
+	address: String!
+	debt: Float!
+	atGameNumber: Int
+	isDead: Boolean
+}
+input PlayerUpdateInput {
 	name: String
-	dob: Int
+	dob: GraphQLDate
 	occupation: String
 	address: String
 	debt: Float
@@ -35,9 +44,16 @@ type Worker {
 	address: String!
 	duty: WorkerDuty!
 }
-input WorkerInput {
+input WorkerCreateInput {
+	name: String!
+	dob: GraphQLDate!
+	occupation: String!
+	address: String!
+	duty: WorkerDuty!
+}
+input WorkerUpdateInput {
 	name: String
-	dob: Int
+	dob: GraphQLDate
 	occupation: String
 	address: String
 	duty: WorkerDuty
@@ -61,12 +77,12 @@ type QueryResolver {
 type MutationResolver {
 	# Player
 	deletePlayer(id: Int): Boolean!
-	createPlayer(player: PlayerInput): Player!
-	updatePlayer(id: Int, player: PlayerInput): Player!
+	createPlayer(player: PlayerCreateInput): Player!
+	updatePlayer(id: Int, player: PlayerUpdateInput): Player!
 	# Worker
 	deleteWorker(id: Int): Worker!
-	createWorker(worker: WorkerInput): Worker!
-	updateWorker(id: Int, worker: WorkerInput): Worker!
+	createWorker(worker: WorkerCreateInput): Worker!
+	updateWorker(id: Int, worker: WorkerUpdateInput): Worker!
 }
 
 # Schema
