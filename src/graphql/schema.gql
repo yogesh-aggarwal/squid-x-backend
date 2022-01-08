@@ -61,12 +61,22 @@ input WorkerUpdateInput {
 }
 
 # Game
+input GameUpdateInput {
+	bets: [Bet!]!
+	hasCovered: Boolean!
+}
+type Bet {
+	vipID: Int!
+	playerID: Int!
+	amount: Float!
+}
 type Game {
 	uuid: String!
 	gameNo: Int!
 	name: String!
 	description: String!
 	hasCovered: Boolean!
+	bets: [Bet!]!
 }
 
 # Resolver
@@ -87,6 +97,7 @@ type MutationResolver {
 	updateWorker(id: Int, worker: WorkerUpdateInput): Worker!
 	# Game
 	moveToNextGame: [Game!]!
+	updateGame(id: Int, worker: GameUpdateInput): Game!
 }
 
 # Schema

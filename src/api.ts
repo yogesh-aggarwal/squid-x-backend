@@ -65,6 +65,7 @@ export const fetchGames = async (): Promise<Game[]> => {
 			name: rawGame["name"],
 			description: rawGame["description"],
 			hasCovered: false,
+			bets: [],
 		});
 	});
 	return games;
