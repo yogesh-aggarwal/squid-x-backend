@@ -54,6 +54,13 @@ export const moveToNextGame = (): Game[] => {
 	games.map((game) => (game.hasCovered = game.gameNo <= currentGame));
 	return games;
 };
+export const updateGame = (id: number, game: Partial<Game>): Game => {
+	games[id - 1] = {
+		...games[id - 1],
+		...game,
+	};
+	return games[id - 1];
+};
 
 // -- Report ----------
 export const prepareReport = (): Report => {

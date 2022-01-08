@@ -7,6 +7,7 @@ import {
 	moveToNextGame,
 	players,
 	prepareReport,
+	updateGame,
 	updatePlayer,
 	updateWorker,
 	workers,
@@ -72,6 +73,9 @@ export default {
 			return updateWorker(args.id, args.worker);
 		},
 		// -- Game ----------
+		updateGame: (_: any, args: { id: number; game: Partial<Game> }): Game => {
+			return updateGame(args.id, args.game);
+		},
 		moveToNextGame: (_: any, __: {}): Game[] => {
 			return moveToNextGame();
 		},
