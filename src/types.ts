@@ -37,6 +37,7 @@ export type Game = {
 
 export type Report = {
 	[key: number]: {
+		games: Game[];
 		players: Player[];
 		workers: Worker[];
 	};

@@ -23,7 +23,7 @@ export const fetchPlayers = async (): Promise<Player[]> => {
 			occupation: rawPlayer["occupation"],
 			address: rawPlayer["address"],
 			debt: rawPlayer["debt"],
-			atGameNumber: 1,
+			atGameNumber: 0,
 			isDead: false,
 		});
 		lastPlayerID++;

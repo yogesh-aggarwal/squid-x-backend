@@ -46,7 +46,11 @@ export const updateWorker = (id: number, worker: Partial<Worker>): Worker => {
 
 // -- Game ----------
 export const moveToNextGame = (): Game[] => {
+	players.map((player) => {
+		if (!player.isDead) player.atGameNumber++;
+	});
 	data[currentGame] = {
+		games: [...games],
 		players: [...players],
 		workers: [...workers],
 	};
