@@ -12,7 +12,7 @@ import {
 	updateWorker,
 	workers,
 } from "./data";
-import { Game, Player, Report, Worker } from "./types";
+import { Bets, Game, Player, Report, Worker } from "./types";
 var GraphQLDate = require("graphql-date");
 import GraphQLJSON from "graphql-type-json";
 
@@ -73,8 +73,8 @@ export default {
 			return updateWorker(args.id, args.worker);
 		},
 		// -- Game ----------
-		updateGame: (_: any, args: { id: number; game: Partial<Game> }): Game => {
-			return updateGame(args.id, args.game);
+		updateGameBets: (_: any, args: { id: number; bets: Bets }): Game => {
+			return updateGame(args.id, args.bets);
 		},
 		moveToNextGame: (_: any, __: {}): Game[] => {
 			return moveToNextGame();

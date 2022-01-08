@@ -61,27 +61,13 @@ input WorkerUpdateInput {
 }
 
 # Game
-input BetInput {
-	vipID: Int
-	playerID: Int
-	amount: Float
-}
-input GameUpdateInput {
-	bets: [BetInput!]
-	hasCovered: Boolean
-}
-type Bet {
-	vipID: Int!
-	playerID: Int!
-	amount: Float!
-}
 type Game {
 	uuid: String!
 	gameNo: Int!
 	name: String!
 	description: String!
 	hasCovered: Boolean!
-	bets: [Bet!]!
+	bets: GraphQLJSON
 }
 
 # Resolver
@@ -102,7 +88,7 @@ type MutationResolver {
 	updateWorker(id: Int, worker: WorkerUpdateInput): Worker!
 	# Game
 	moveToNextGame: [Game!]!
-	updateGame(id: Int, game: GameUpdateInput): Game!
+	updateGameBets(id: Int, bets: GraphQLJSON): Game!
 }
 
 # Schema

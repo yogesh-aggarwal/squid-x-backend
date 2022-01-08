@@ -1,4 +1,4 @@
-import { Game, Player, Report, Worker } from "./types";
+import { Bets, Game, Player, Report, Worker } from "./types";
 import { fetchGames, fetchPlayers, fetchWorkers } from "./api";
 
 export let players: Player[] = [];
@@ -54,11 +54,8 @@ export const moveToNextGame = (): Game[] => {
 	games.map((game) => (game.hasCovered = game.gameNo <= currentGame));
 	return games;
 };
-export const updateGame = (id: number, game: Partial<Game>): Game => {
-	games[id - 1] = {
-		...games[id - 1],
-		...game,
-	};
+export const updateGame = (id: number, bets: Bets): Game => {
+	games[id - 1].bets = bets;
 	return games[id - 1];
 };
 

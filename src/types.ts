@@ -19,9 +19,12 @@ export type Worker = {
 };
 
 export type Bet = {
-	vipID: number;
-	playerID: number;
-	amount: number;
+	// PlayerID : Amount
+	[key: number]: number;
+};
+export type Bets = {
+	// UserID : Bet
+	[key: string]: Bet;
 };
 export type Game = {
 	uuid: string;
@@ -29,7 +32,7 @@ export type Game = {
 	name: string;
 	description: string;
 	hasCovered: boolean;
-	bets: Bet[];
+	bets: Bets;
 };
 
 export type Report = {

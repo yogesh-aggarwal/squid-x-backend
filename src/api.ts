@@ -24,8 +24,7 @@ export const fetchPlayers = async (): Promise<Player[]> => {
 			address: rawPlayer["address"],
 			debt: rawPlayer["debt"],
 			atGameNumber: 1,
-			// isDead: false,
-			isDead: lastPlayerID % 2 == 0,
+			isDead: false,
 		});
 		lastPlayerID++;
 	});
@@ -65,7 +64,7 @@ export const fetchGames = async (): Promise<Game[]> => {
 			name: rawGame["name"],
 			description: rawGame["description"],
 			hasCovered: false,
-			bets: [],
+			bets: {},
 		});
 	});
 	return games;
